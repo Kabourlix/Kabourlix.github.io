@@ -6,7 +6,8 @@ categories: HoloLens2 Unity Debug
 ---
 
 
-In this tutorial we will see how to debug efficiently project made with Unity for UWP (especially for HoloLens 2). Some solutions provided could work with any UWP project but it has only been tested with HoloLens 2.
+In this article, I will present you a few ways on how to debug efficiently project made with Unity for UWP (especially for HoloLens 2). Some of the solutions provided could work with any UWP project but it has only been tested with HoloLens 2. 
+These solutions are probably not optimal but may be a start for your own imagination.
 
 ## The virtual console 
 The first solution I bring to you is the more simple but less elegant. It consists in **creating a virtual console debugger directly into your project**. Therefore, when you test you prototype you could have a visual access to the `Debug.Log()` and so on messages. All of this directly with the headset on. 
