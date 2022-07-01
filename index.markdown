@@ -5,4 +5,4 @@
 layout: home
 ---
 
-Welcome to my website. A modifier mais c'est quand même assez simple finalement.
+Welcome to my website. UNFINISHED : WORK IN PROGRESS
