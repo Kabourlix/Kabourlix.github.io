@@ -9,32 +9,32 @@ categories: HoloLens2 Unity Debug
 In this article, I will present you a few ways on how to debug efficiently project made with Unity for UWP (especially for HoloLens 2). Some of the solutions provided could work with any UWP project but it has only been tested with HoloLens 2. 
 These solutions are probably not optimal but may be a start for your own imagination.
 
-## The virtual console 
+## 1. The virtual console 
 The first solution I bring to you is the more simple but less elegant. It consists in **creating a virtual console debugger directly into your project**. Therefore, when you test you prototype you could have a visual access to the `Debug.Log()` and so on messages. All of this directly with the headset on. 
 
 Actually, such method would also work with VR headset too since it is only a UI Canvas (only minor modification need to be done then). The one I have made is inspired from this [tutorial video](https://www.youtube.com/watch?v=Pi4SHO0IEQY&t=104s). 
 
 How to do on your own ? You just have to deal with these steps : 
-#### For the displaying part
+#### 1.1. For the displaying part
 * Setting up a canvas to draw the message on
 * For displaying the message, two solutions : 
 	* Use on Text game object to gather all the messages (this is presented in the video above)
 	* Create a Text prefab that you would instantiate at each message
 The second solution *might be less efficient* (need to instantiate many GameObject).
 
-#### For the backend part
+#### 1.2. For the backend part
 * You just have to gather the log message using /Application.logMessageReceived/ event which is triggered whenever a log message is fired.
 * Depending on the UI, communicate the message received to it.
 
 I share [here](https://github.com/Kabourlix/UnityMRConsole.git) my GitHub repo which contains my own solution (it still need to be perfected, clearly not final version). 
 
-## Remote Debugging
+## 2. Remote Debugging
 This solution would only work for HoloLens (and probably only HoloLens 2 but not sure). 
 
 Actually, you could use Unity Debugger in Visual Studio while your project is playing on the HoloLens.
 This is very well explained on the Microsoft documentation so I would rather redirect you directly to it : [Managed debugging with Unity - Mixed Reality | Microsoft Docs](https://docs.microsoft.com/en-us/windows/mixed-reality/develop/unity/managed-debugging-with-unity-il2cpp)
 
-## Post execution debugging : using .log files
+## 3. Post execution debugging : using .log files
 The last solution is present here is probably the easiest one but not the most practical one. It only consists in gathering all debug message in a .log file before the application quit and get it back through your HoloLens File Explorer.
 
 I know that Unity create its own .log files such as /UnityPlayer.log/ which could be find here in the HoloLens  `…/[projectName]/TempAsset/UnityPlayer.log`.
