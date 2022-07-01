@@ -25,7 +25,7 @@ The second solution *might be less efficient* (need to instantiate many GameObje
 * You just have to gather the log message using /Application.logMessageReceived/ event which is triggered whenever a log message is fired.
 * Depending on the UI, communicate the message received to it.
 
-I share here my GitHub repo which contains my own solution (it still need to be perfected, clearly not final version). # AJOUTER LE REPO
+I share [here](https://github.com/Kabourlix/UnityMRConsole.git) my GitHub repo which contains my own solution (it still need to be perfected, clearly not final version). 
 
 ## Remote Debugging
 This solution would only work for HoloLens (and probably only HoloLens 2 but not sure). 
