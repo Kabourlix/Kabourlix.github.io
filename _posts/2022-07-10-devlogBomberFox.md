@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Devlog - BomberFox"
+title: "[FR] Devlog - BomberFox"
 date:   2022-07-10 19:50:00 +0200
 categories: Unity GameDev
 ---
