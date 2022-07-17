@@ -105,4 +105,34 @@ Par contre, il faudra revoir le système de collision, qui devrait par ailleurs 
 
 En outre, j’aimerai pour la prochaine fois pouvoir créer facilement un niveau (positionnement des briques incassables et des briques cassables) au moyen d’un fichier externe (.csv) pour le moment. Il faudrait voir comment développer un outil intégrer à Unity qui permettrait de faciliter le travail (mais en vrai je pense qu’utiliser le grid snapping et les prefabs suffit).
 
+---
 
+## 05 Retour au stade précédent : 17 Juillet 2022
+> Déplacement, Positionnement des bombes, Gestion de Bug
+
+Aujourd’hui j’ai essentiellement retravaillé mes déplacements et l’affichage des déplacements. En outre, j’ai ré-implémenter le système de bombes et son UI pour revenir au point précédent avec l’autre prototype.
+Globalement j’ai : 
+* Gérer les rotations du personnage (pour l’affichage mais aussi pour la logique de placement des bombes)
+* Remis en place les bombes (il fallait ajuster le script écrit précédemment)
+* Gérer les blocages et la restriction des déplacements en fonction des cases visées
+* Corriger quelques petits problèmes 
+
+Je ne vais pas trop m’étendre sur l’ensemble de ce qui a été fait. Je vais plutôt m’attarder uniquement sur le positionnement des bombes (ajustement et rotation) qui couvre le gros de ce qui a été fait
+
+### Gestion des rotations
+Pour faire tourner le personnage dans la bonne direction, j’ai récupérer le vecteur de direction que l’on obtient via l’input de l’utilisateur `var dir = monInputAction.ReadValueAs<Vector2>();`. 
+J’ai transformé ça en un `Vector3` approprié et je l’utilise pour savoir de quel angle (par rapport à la direction avant du joueur `transform.forward` il faut tourner).
+Ainsi, je peux tourner le GameObject du joueur et avec cette direction je peux savoir où l’on veut positionner la bombe.
+
+### Positionnement des bombes
+
+Il y avait quelques problèmes. Le premier était qu’étant donné qu’on utilise `transform.forward` pour déterminer la direction vers laquelle on veut poser la bombe, si le joueur va trop vite, il peut positionner la bombe plus loin.
+J’ai régler ce problème simplement en conservant la direction visé et en utilisant cette dernière pour poser la bombe. 
+Mais là apparaît un autre problème, le joueur peut poser une bombe sur la case vers laquelle il se dirige et finit alors par se retrouver sur la même case que la bombe. (Il peut toujours se déplacer mais ça risque de poser problème plus tard).
+Pour prévenir ce problème, j’ai plusieurs idées : 
+* Empêcher le joueur de poser une bombe pendant une rotation
+* Poser la bombe une case plus loin pendant la rotation
+C’est plutôt vers la première solution que je vais me tourner.
+
+En attendant, voilà le résultat obtenu aujourd’hui (j’ai aussi remis le petit renard et ses animations pour un peu plus de gaieté) :
+<iframe width="600" height="400" src="https://www.youtube.com/embed/CmFZP9VSt2M" title="DevLog 05 - BomberFox" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
